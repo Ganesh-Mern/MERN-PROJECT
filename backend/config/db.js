@@ -1,4 +1,4 @@
-const mongoose=require("mongoose")
+import  {mongoose} from "mongoose"
 
 const mongodbConnect=async()=>{
     try {
@@ -11,4 +11,4 @@ const mongodbConnect=async()=>{
     }
 }
 
-module.exports=  mongodbConnect;
+export default  mongodbConnect;

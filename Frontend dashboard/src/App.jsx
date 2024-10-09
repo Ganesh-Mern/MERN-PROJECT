@@ -9,22 +9,23 @@ import Users from "./pages/dashboardpage/Users";
 import Emails from "./pages/dashboardpage/Emails";
 import AddPaln from "./components/add plan/AddPaln";
 import Settings from "./pages/dashboardpage/Settings";
-import NewHome from "./pages/NewHome";
+import RegistrationPage from "./pages/auth/RegistrationPage ";
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Layout />}>
-          <Route path="overview" element={<Overview />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<RegistrationPage />} />
+        <Route path="/dashboard" element={<Layout />}>
+          <Route index element={<Overview />} />
           <Route path="plans" element={<Plans />} />
           <Route path="addplan" element={<AddPaln />}></Route>
           <Route path="users" element={<Users />} />
           <Route path="emails" element={<Emails />} />
           <Route path="settings" element={<Settings />} />
         </Route>
-        <Route path="/newHome" element={<NewHome/>}/>
       </Routes>
     </Router>
   );

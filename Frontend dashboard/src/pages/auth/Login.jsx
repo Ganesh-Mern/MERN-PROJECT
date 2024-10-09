@@ -2,25 +2,49 @@ import React, { useEffect, useState } from "react";
 import { images } from "../../utils/images";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import InputField from "../../components/input/InputField";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate=useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
-  const [formData,setFormData] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
+  });
   const handleChange = (e) => {
-    const { name, value } = e.target; 
-   setFormData(
-    {...formData,[name]:value}
-   )
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  const submitValue=(e)=>{
-    e.preventDefault()
-    console.log("data",formData);
-    
-  }
+  const submitValue = async (e) => {
+    e.preventDefault();
+    // console.log("data",formData);
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      });
+      if (!res.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Login failed");
+      }
+      const data = await res.json();
+      const { token } = data;
+
+      // Store the token in local storage
+      localStorage.setItem('token', token);
+      console.log(token);
+      
+
+      // Redirect to a different page or update application state
+      console.log('Login successful!', data);
+      navigate('/')
+    } catch (error) {
+      // console.log(error);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,7 +73,7 @@ const Login = () => {
         </div>
         <div className="w-screen bg-white rounded-tl-3xl  h-[30rem] md:h-screen rounded-tr-3xl md:rounded-tr-none md:rounded-bl-3xl flex flex-col items-center justify-center md:px-10">
           <div className="m-auto  md:w-2/5 md:h-0 flex flex-col justify-center">
-            <form className="md:space-y-6 space-y-4" >
+            <form className="md:space-y-6 space-y-4">
               <InputField
                 label="Email"
                 id="email"
@@ -58,7 +82,9 @@ const Login = () => {
                 name="email" // Specify the input name
                 value={formData.email}
                 handleChange={handleChange}
-                className={"mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#006FEE] focus:border-[#006FEE]"}
+                className={
+                  "mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#006FEE] focus:border-[#006FEE]"
+                }
               />
               <InputField
                 label="Password"
@@ -69,7 +95,9 @@ const Login = () => {
                 value={formData.password}
                 handleChange={handleChange}
                 relative="relative"
-                className={"mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#006FEE] focus:border-[#006FEE]"}
+                className={
+                  "mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#006FEE] focus:border-[#006FEE]"
+                }
               >
                 <button
                   type="button"

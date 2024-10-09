@@ -1,55 +1,103 @@
-const User=require("../models/User")
-const  bcrypt =require ("bcryptjs");
- 
- const signup=async(req,res)=>{
-    // res.send({message:"signup"})
-    try {
-        const {fullName,countryName,countryCode,phoneNumber,confirmPassword,password,email}=req.body;
-        if(password !== confirmPassword){
-            return res.status(409).json({ error: "Passwords don't match" });
-        }
-        const user = await User.findOne({ email });
-        if (user) {
-			return res.status(400).json({ error: "Username already exists" });
-		}
-        const salt = await bcrypt.genSalt(10);
-		const hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = new User({
-			fullName,
-			email,
-			password:hashedPassword,
-            countryName,
-            countryCode,
-            phoneNumber
-			
-		})
-        if (newUser) {
-			generateTokenAndSetCookie(newUser._id, res);
-			await newUser.save();
+import User from "../models/User.js";
+import ApiError from "../utils/api.error.js";
+import ApiResponse from "../utils/api.response.js";
 
-			res.status(201).json({
-				_id: newUser._id,
-				fullName: newUser.fullName,
-				email:newUser.email,
-                countryCode:newUser.countryCode,
-                countryName:newUser.countryName,
-                phoneNumber:newUser.phoneNumber
-				
-			});
-		} else {
-			res.status(400).json({ error: "Invalid user data" });
-		}
-	} catch (error) {
-		console.log("Error in signup controller", error.message);
-		res.status(500).json({ error: "Internal Server Error" });
-	}
-}
- const login=async(req,res)=>{
-    res.send({message:"login"})
-    
-}
- const logout=async(req,res)=>{
-    res.send({message:"logout"})
-    
-}
-module.exports={signup,login,logout}
+const options = {
+  httpOnly: true,
+  secure: true,
+};
+
+const generateAccessToken = async (userId) => {
+  try {
+    const user = await User.findById(userId);
+    const accessToken = user.generateAccessToken();
+    return accessToken;
+  } catch (error) {
+    console.log("error generating Access token",error);
+  }
+};
+const signup = async (req, res) => {
+  try {
+    const {
+      fullName,
+      countryCode,
+      countryName,
+      email,
+      password,
+      phoneNumber,
+      confirmPassword,
+      gender,
+    } = req.body;
+    if (
+      !fullName ||
+      !countryCode ||
+      !countryName ||
+      !email ||
+      !password ||
+      !gender ||
+      !phoneNumber ||
+      !confirmPassword
+    ) {
+      return res.status(400).json(new ApiError(400, "All fields are required"));
+    }
+    const userExist = await User.findOne({ email });
+    if (userExist) {
+      return res.status(409).json(new ApiError(409, "email already exist"));
+    }
+
+    const newUser = await User.create({
+      fullName,
+      email,
+      password,
+      countryName,
+      countryCode,
+      phoneNumber,
+      gender,
+    });
+    if (!newUser) {
+      return res
+        .status(500)
+        .json(
+          new ApiError(
+            500,
+            "Something went wrong while registration. Try Again!"
+          )
+        );
+    }
+
+    return res
+      .status(201)
+      .json(new ApiResponse(201, null, "User registered Successfully"));
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, "Something went Wrong"));
+  }
+};
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json(new ApiError(400, "Invalid email or password"));
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json(new ApiError(404, "User doesn't exist!"));
+    }
+    const passwordMatch = await user.comparePassword(password);
+    if (!passwordMatch) {
+      return res.status(404).json(new ApiError(404,"Invalid Password"));
+    }
+    const accessToken = await generateAccessToken(user._id);
+    return res
+      .status(200).cookie("accessToken",accessToken,options)
+      .json(new ApiResponse(200, {accessToken}, "Login successfully"));
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, "Something went Wrong"));
+  }
+};
+// const logout = async (req, res) => {
+//   res.send({ message: "logout" });
+// };
+export { signup, login };
