@@ -29,7 +29,7 @@ const Header = ({ sidebarOpen, openSidebar }) => {
   
 
   return (
-    <div className="w-full h-24 bg-white shadow-xl px-4 py-2 flex items-center ">
+    <div className="sticky top-0 bg-white shadow-md p-4 z-10 flex items-center justify-between">
       <div className="flex  h-full  w-2/5 sm:w-1/4 items-center gap-4">
         <GiHamburgerMenu size={24} className="inline md:hidden" onClick={() => openSidebar()} />
         <h1 className="text-xl font-bold text-center">Dashboard</h1>

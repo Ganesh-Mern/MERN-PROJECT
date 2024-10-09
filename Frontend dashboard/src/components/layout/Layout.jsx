@@ -13,12 +13,14 @@ const Layout = () => {
   }
 
   return (
-    <div className='w-screen h-screen bg-custom-bg flex '>
+    <div className=' h-screen  flex '>
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar}/>
-      <div className="w-screen h-screen  absolute  md:relative bg-custom-bg  ml-[width-of-sidebar] overflow-y-auto">
+      <div className="flex-1 flex flex-col  ">
         <Header sidebarOpen={sidebarOpen} openSidebar={openSidebar}/>
-        
+        <div className="overflow-auto flex-1 p-4">
         <Outlet  className=""/>
+
+        </div>
       </div>
       
     </div>

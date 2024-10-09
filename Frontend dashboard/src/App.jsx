@@ -9,6 +9,7 @@ import Users from "./pages/dashboardpage/Users";
 import Emails from "./pages/dashboardpage/Emails";
 import AddPaln from "./components/add plan/AddPaln";
 import Settings from "./pages/dashboardpage/Settings";
+import NewHome from "./pages/NewHome";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="emails" element={<Emails />} />
           <Route path="settings" element={<Settings />} />
         </Route>
+        <Route path="/newHome" element={<NewHome/>}/>
       </Routes>
     </Router>
   );
