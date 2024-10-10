@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Successful</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 20px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: #006fec;
+        padding: 10px;
+        border-radius: 50%;
+      }
+
+      h1,
+      h2 {
+        color: black;
+        text-align: center;
+      }
+
+      p {
+        color: black;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      p strong {
+        font-weight: bold;
+      }
+
+      p:last-child {
+        margin-top: 20px;
+      }
+
+      .trial-offer {
+        background-color: #f7f9fb;
+        border: 2px dashed #006fec;
+        padding: 20px;
+        text-align: center;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .trial-offer h3 {
+        font-size: 22px;
+        color: #006fec;
+        margin-bottom: 10px;
+      }
+
+      .trial-offer p {
+        color: #333;
+        font-size: 16px;
+      }
+
+      .countdown {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e74c3c; /* Red color for countdown */
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .social-icons a {
+        margin: 0 10px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px; /* Set width for the circular area to 30px */
+        height: 30px; /* Set height for the circular area to 30px */
+        overflow: hidden; /* Hide overflow */
+        border-radius: 50%; /* Make it circular */
+        background-color: #f7f9fb; /* Optional: add a background color */
+      }
+
+      .social-icon {
+        width: 100%; /* Scale icon to fit the circle */
+        height: auto; /* Maintain aspect ratio */
+      }
+      /* Footer styles */
+      .footer {
+        margin-top: 30px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .footer a {
+        color: #006fec;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="/assets/logo.png" alt="Logo" />
+      </div>
+      <h1>Registration Successful!</h1>
+      <h2>Welcome to MQ Parental Control</h2>
+      <p>Dear <%= name %>,</p>
+      <p>
+        Thank you for registering with us. We're thrilled to have you onboard!
+      </p>
+
+      <div class="trial-offer">
+        <h3>Experience 14 Days of Free Access!</h3>
+        <p>
+          <strong>Welcome to MQ Parental Control!</strong> As a special thank
+          you for registering, we're excited to offer you a 14-day free trial of
+          our premium features. Dive in and discover how easy it is to keep your
+          child safe online!
+        </p>
+        <p class="countdown" id="countdown"></p>
+        <p>Start using your free trial today!</p>
+      </div>
+
+      <p>If you have any questions, feel free to reach out to us anytime.</p>
+      <br />
+      <p>Best regards,</p>
+      <p><strong>MQ Parental Control</strong></p>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+            alt="facebook"
+            class="social-icon"
+          />
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+            alt="instagram"
+            class="social-icon"
+          />
+        </a>
+        <a href="https://x.com" target="_blank">
+          <img
+            src="https://freepnglogo.com/images/all_img/1691832581twitter-x-icon-png.png"
+            alt="X"
+            class="social-icon"
+          />
+        </a>
+      </div>
+      <div class="footer">
+        <p>
+          Need help? Contact us at
+          <a href="mailto:support@mqparentalcontrol.com"
+            >support@mqparentalcontrol.com</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Set the end date for the trial
+      const trialDays = 14;
+      const startDate = new Date();
+      const endDate = new Date(
+        startDate.getTime() + trialDays * 24 * 60 * 60 * 1000
+      );
+
+      // Update the countdown every second
+      const countdownElement = document.getElementById("countdown");
+      const updateCountdown = () => {
+        const now = new Date();
+        const timeRemaining = endDate - now;
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        if (timeRemaining < 0) {
+          countdownElement.innerHTML = "Your free trial has ended!";
+        } else {
+          countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+        }
+      };
+
+      // Initial countdown update
+      updateCountdown();
+      // Set the countdown to update every second
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>

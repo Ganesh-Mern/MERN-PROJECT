@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import {
   BarChart,
@@ -7,8 +8,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 

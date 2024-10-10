@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { images } from "../../utils/images";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
@@ -26,8 +27,10 @@ const Login = () => {
         },
         body: JSON.stringify(formData)
       });
+      console.log(res);
+      
       if (!res.ok) {
-        const errorData = await response.json();
+        const errorData = await res.json();
         throw new Error(errorData.error || "Login failed");
       }
       const data = await res.json();
@@ -40,9 +43,9 @@ const Login = () => {
 
       // Redirect to a different page or update application state
       console.log('Login successful!', data);
-      navigate('/')
+      navigate('/dashboard')
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
