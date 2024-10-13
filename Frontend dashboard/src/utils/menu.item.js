@@ -9,22 +9,37 @@ import { TbMailFilled } from "react-icons/tb";
 export const menuItems = [
   {
     label: "Overview",
-    path: "/overview",
+    path: "overview",
     icon: RxDashboard,
   },
   {
     label: "Plans",
-    path: "/plans",
+    path: "plans",
     icon: GrPlan,
   },
   {
     label: "Users",
-    path: "/users",
+    path: "users",
     icon: FaUsers,
   },
   {
     label: "Emails",
-    path: "/emails",
+    path: "emails",
+    icon: TbMailFilled,
+  },
+  {
+    label: "Billing",
+    path: "billing",
+    icon: TbMailFilled,
+  },
+  {
+    label: "Block sites",
+    path: "blocksites",
+    icon: TbMailFilled,
+  },
+  {
+    label: "Ticket Id",
+    path: "ticketid",
     icon: TbMailFilled,
   },
 ];
@@ -32,12 +47,12 @@ export const menuItems = [
 export const footerItems = [
   {
     label: "Settings",
-    path: "/settings",
+    path: "settings",
     icon: IoIosSettings,
   },
   {
     label: "Logout",
-    path: "/logout",
+    path: "logout",
     icon: FiLogOut,
   },
 ];

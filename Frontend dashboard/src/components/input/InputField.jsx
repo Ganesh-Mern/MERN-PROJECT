@@ -1,31 +1,27 @@
-import React from "react";
-
+/* eslint-disable react/prop-types */
 const InputField = ({
   label,
-  id,
+  htmlFor,
+  name,
+  value,
   type,
   placeholder,
-  onClick,
+  handleChange,
   children,
-  relative,
-  value, handleChange,
-  name,
-  className
+  className,
 }) => {
   return (
-    <div className={relative}>
-      <label className="text-sm font-medium text-gray-700" htmlFor="email">
+    <div className={className}>
+      <label className="text-sm font-medium text-gray-700" htmlFor={htmlFor}>
         {label}
       </label>
       <input
-        id={id}
         type={type}
-        value={value}
         name={name}
         placeholder={placeholder}
-        onChange={handleChange} 
-        // onClick={onClick}
-        className={className}
+        value={value}
+        onChange={handleChange}
+        className="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#006FEE] focus:border-[#006FEE]"
       />
       {children}
     </div>

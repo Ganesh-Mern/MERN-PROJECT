@@ -16,7 +16,6 @@ const transporter = createTransport({
         pass:process.env.SMTP_PASSWORD
     }
 });
-
 export const sendMail = async (to, subject, template, data) => {
   try {
     const templatePath = path.join(__dirname, "../mail", template);

@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 
 import { CiDollar } from "react-icons/ci";
 import { FaUserGroup } from "react-icons/fa6";
 import { VscIssueReopened } from "react-icons/vsc";
 import { IoIosSearch } from "react-icons/io";
-import profile from "../../assets/images/oguz-yagiz-kara-ej59TdVxqCk-unsplash.jpg";
+import { images } from "../../utils/images";
 import { MdPushPin } from "react-icons/md";
 import StatisticCard from "../../components/statistic/StatisticCard";
 
@@ -42,7 +43,7 @@ const Emails = () => {
 
   const emailData = [
     {
-      Profile: profile,
+      Profile: images.profile,
       name: "Naveed Aabas",
       text: "kevin please check our talk project team someone need you to do something",
       ping: true,
@@ -50,14 +51,14 @@ const Emails = () => {
       mark: "1",
     },
     {
-      Profile: profile,
+      Profile: images.profile,
       name: "Naveed Aabas",
       text: "kevin please check our talk project team someone need you to do something",
       ping: false,
       time: "08:55",
     },
     {
-      Profile: profile,
+      Profile: images.profile,
       name: "Naveed Aabas",
       text: "kevin please check our talk project team someone need you to do something",
       ping: true,
@@ -66,7 +67,7 @@ const Emails = () => {
       
     },
     {
-      Profile: profile,
+      Profile: images.profile,
       name: "Naveed Aabas",
       text: "kevin please check our talk project team someone need you to do something",
       ping: true,
@@ -75,7 +76,7 @@ const Emails = () => {
       
     },
     {
-      Profile: profile,
+      Profile: images.profile,
       name: "Naveed Aabas",
       text: "kevin please check our talk project team someone need you to do something",
       ping: false,
@@ -122,7 +123,7 @@ const Emails = () => {
         </div>
         <div className="mt-4 bg-white flex flex-col items-center justify-between ">
           {emailData.map((item, index) => (
-            <div className={`flex flex-col md:flex-row ${item.mark?"bg-gray-100":""} my-1 w-full items-center gap-4 justify-between p-2 `}>
+            <div key={index} className={`flex flex-col md:flex-row ${item.mark?"bg-gray-100":""} my-1 w-full items-center gap-4 justify-between p-2 `}>
               <div className="flex flex-col md:flex-row items-center gap-2 ">
                 {item.ping?<MdPushPin size={24} className="text-red-600 rotate-45" />:""}
                 <span className="w-6 h-6 rounded-full flex items-center">

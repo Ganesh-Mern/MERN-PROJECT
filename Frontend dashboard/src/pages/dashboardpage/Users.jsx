@@ -1,6 +1,6 @@
 import React from "react";
 import { IoIosSearch } from "react-icons/io";
-import profile from "../../assets/images/oguz-yagiz-kara-ej59TdVxqCk-unsplash.jpg";
+import { images} from "../../utils/images"
 import TableComponent from "../../components/table/TableComponent";
 
 
@@ -16,7 +16,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -27,7 +27,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -38,7 +38,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -49,7 +49,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -60,7 +60,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -71,7 +71,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
     {
       "ID": "Naveed Aabass",
@@ -82,7 +82,7 @@ const Users = () => {
       "Phone number": "+92-32030030303",
       "Package": "6month",
       "Role": "Gaurdian",
-      "profile": profile,
+      "profile": images.profile,
     },
    
   ];

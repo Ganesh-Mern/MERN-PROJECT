@@ -90,7 +90,7 @@ const Plans = () => {
           <Button text={"Yearly"} bg={"bg-gray-300"} />
         </div>
       </div>
-      <div className="w-full grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3   gap-3 mt-10">
+      <div className="w-full grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   gap-3 mt-10">
         {plans.map((item, index) => (
           <PlansCard
             key={index}
@@ -103,15 +103,16 @@ const Plans = () => {
           />
         ))}
 
-        <Link to={"/addplan"} className="flex items-center justify-center border-dashed border-4 font-poppins text-3xl min-h-[10rem] mt-5 sm:mt-0">
-          <div >
-            Add Plans
-          </div>
+        <Link
+          to={"/addplans"}
+          className="flex items-center justify-center border-dashed border-4 font-poppins text-3xl min-h-[10rem] mt-5 sm:mt-0"
+        >
+          <div>Add Plans</div>
         </Link>
       </div>
       <div className=" grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full shadow-xl min-h-[12rem] bg-white px-4 py-3 gap-2  rounded-xl  mt-11">
         {paymentMethod.map((item, index) => (
-          <Payment type={item.type} logo={item.logo} />
+          <Payment key={index} type={item.type} logo={item.logo} />
         ))}
       </div>
       <div className="p-4">

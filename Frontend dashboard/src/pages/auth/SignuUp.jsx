@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 
-const RegistrationPage = () => {
+const SignUp = () => {
     const countryOptions = [
         { name: 'United States', code: '+1' },
         { name: 'United Kingdom', code: '+44' },
@@ -149,4 +150,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default SignUp;

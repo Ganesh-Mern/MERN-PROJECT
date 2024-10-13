@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import SettingsRadio from "../../components/settingsRadiobuttons/SettingsRadio";
 import ToggleButton from "../../components/togglebutton/ToggleButton";
@@ -45,7 +46,7 @@ const Settings = () => {
                 activeTab === "notification"
                   ? "active border-b-2 border-black"
                   : ""
-              } font-segoe font-semibold text-lg`}
+              } font-segoe font-semibold text-lg cursor-pointer`}
               onClick={() => handleTabChange("notification")}
             >
               Notification
@@ -53,7 +54,7 @@ const Settings = () => {
             <h1
               className={`${
                 activeTab === "timezone" ? "active border-b-2 border-black" : ""
-              } font-segoe font-semibold text-lg`}
+              } font-segoe font-semibold text-lg cursor-pointer`}
               onClick={() => handleTabChange("timezone")}
             >
               Time Zone
@@ -88,7 +89,7 @@ const Settings = () => {
                       {alert.map(
                         (item, index) =>
                           index < 6 && (
-                            <div className="flex items-center py-1 gap-2 text-base font-segoe font-normal">
+                            <div key={index} className="flex items-center py-1 gap-2 text-base font-segoe font-normal">
                               <ToggleButton key={index} /> {item}
                             </div>
                           )
@@ -98,7 +99,7 @@ const Settings = () => {
                       {alert.map(
                         (item, index) =>
                           index >= 6 && (
-                            <div className="flex items-center py-1 gap-2 text-base font-segoe font-normal">
+                            <div key={index} className="flex items-center py-1 gap-2 text-base font-segoe font-normal">
                               <ToggleButton key={index} />
                               {item}
                             </div>
@@ -129,7 +130,7 @@ const Settings = () => {
                 </div>
                 <div className="mt-1">
                   {days.map((item, index) => (
-                    <div className="py-1 sm:py-2 flex items-center justify-between border-b-2">
+                    <div key={index} className="py-1 sm:py-2 flex items-center justify-between border-b-2">
                       <div className="flex gap-2 items-center "><ToggleButton key={index} />{item}</div>
                       <div className="flex flex-col sm:flex-row gap-2  ">
                         <div className="p-2  flex items-center  border rounded-lg gap-2 ">
