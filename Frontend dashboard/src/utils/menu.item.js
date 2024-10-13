@@ -9,7 +9,7 @@ import { TbMailFilled } from "react-icons/tb";
 export const menuItems = [
   {
     label: "Overview",
-    path: "overview",
+    path: "/dashboard",
     icon: RxDashboard,
   },
   {
@@ -25,6 +25,11 @@ export const menuItems = [
   {
     label: "Emails",
     path: "emails",
+    icon: TbMailFilled,
+  },
+  {
+    label: "Admin",
+    path: "admin",
     icon: TbMailFilled,
   },
   {

@@ -13,6 +13,7 @@ import SignUp from "./pages/auth/SignuUp";
 import TicketId from "./pages/dashboardpage/TicketId";
 import Billing from "./pages/dashboardpage/Billing";
 import BlockSite from "./pages/dashboardpage/BlockSite";
+import Admin from "./pages/dashboardpage/Admin";
 
 function App() {
   return (
@@ -22,11 +23,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Overview />} />
-          <Route path="plans" element={<Plans />}>
-            <Route path="addplans" element={<AddPaln />} />
-          </Route>
+          <Route path="plans" element={<Plans />} />
+          <Route path="plans/addplans" element={<AddPaln />} />
           <Route path="users" element={<Users />} />
           <Route path="emails" element={<Emails />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="billing" element={<Billing />} />
           <Route path="blocksites" element={<BlockSite />} />
           <Route path="ticketid" element={<TicketId />} />

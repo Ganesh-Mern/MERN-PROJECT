@@ -8,8 +8,8 @@ const Payment = ({ type,logo }) => {
         {type === "" ? (
           ""
         ) : (
-          <div class="p-[3px] border-2 border-green-400 rounded-full ">
-            <div class="bg-green-500 w-4 h-4 rounded-full"></div>
+          <div className="p-[3px] border-2 border-green-400 rounded-full ">
+            <div className="bg-green-500 w-4 h-4 rounded-full"></div>
           </div>
         )}
         

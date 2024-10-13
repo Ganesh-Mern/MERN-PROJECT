@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosSearch } from "react-icons/io";
 import { images} from "../../utils/images"
-import TableComponent from "../../components/table/TableComponent";
+// import TableComponent from "../../components/table/TableComponent";
 
 
 const Users = () => {
@@ -110,7 +110,7 @@ const Users = () => {
           </div>
         </div>
         <div>
-          <TableComponent column={column} data={data} />
+          {/* <TableComponent column={column} data={data} /> */}
         </div>
       </div>
     </div>

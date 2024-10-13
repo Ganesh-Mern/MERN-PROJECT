@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import paypal from "../../assets/images/paypal-3384015_1920 (1).png";
 import mastercard from "../../assets/images/mastercard (1).svg";
@@ -104,11 +105,12 @@ const Plans = () => {
         ))}
 
         <Link
-          to={"/addplans"}
+          to={"addplans"}
           className="flex items-center justify-center border-dashed border-4 font-poppins text-3xl min-h-[10rem] mt-5 sm:mt-0"
         >
           <div>Add Plans</div>
         </Link>
+        
       </div>
       <div className=" grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full shadow-xl min-h-[12rem] bg-white px-4 py-3 gap-2  rounded-xl  mt-11">
         {paymentMethod.map((item, index) => (
@@ -116,8 +118,9 @@ const Plans = () => {
         ))}
       </div>
       <div className="p-4">
-        <Outlet  />
-      </div>
+          <Outlet />
+        </div>
+
       {/* <AddPaln /> */}
     </div>
   );
